@@ -30,3 +30,13 @@ int Button::getPin() {
   return this->pin;
 }
 
+bool Button::isPressedOnce() {
+  if(! state && this->isPressed()) {
+    return true;
+    state = true;
+  }
+  if(this->isReleased()) {
+    state = false;
+  }
+  return false;
+}

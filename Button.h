@@ -4,6 +4,7 @@ class Button {
 private:
   int pin;
   int mode;
+  bool state;
   double timer;
 
 public:
@@ -14,4 +15,5 @@ public:
   bool isReleased();
   int getPin();
   void setPin(int pin);
+  bool isPressedOnce();
 };
