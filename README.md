@@ -1,6 +1,6 @@
 # littleboxes
 
-This is a small library I use in my arduino projects. It is a set of classes you can use for [Button](src/Button.h)s, [Encoder](src/Encoder.h)s or what I call an [AnalogButton](src/AnalogButton.h).
+This is a small library I use in my arduino projects. It is a set of classes you can use for [Button](src/Button.h)s, [Encoder](src/Encoder.h)s and, what I call, an [AnalogButton](src/AnalogButton.h).
 
 I use these for my *little boxes*, like [boxwax](https://github.com/lotherk/boxwax) or [joynardo](https://github.com/lotherk/joynardo).
 
