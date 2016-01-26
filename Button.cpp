@@ -1,21 +1,33 @@
 #include "Button.h"
 
+bool SUCCESS;
+bool FAIL;
 Button::Button() {}
 
 Button::Button(int pin) {
   this->pin = pin;
+  SUCCESS = true;
+  FAIL = false;
 }
 
 Button::Button(int pin, int mode) {
   this->pin = pin;
   this->mode = mode;
+  if(mode == INPUT) {
+    SUCCESS = true;
+    FAIL = false;
+  } else {
+    SUCCESS = false;
+    FAIL = true;
+  }
   pinMode(this->pin, this->mode);
 
 }
 
 bool Button::isPressed() {
-  if(digitalRead(this->pin)) return true;
-  return false;
+  
+  if(digitalRead(this->pin)) return SUCCESS;
+  return FAIL;
 }
 
 bool Button::isReleased() {
@@ -32,11 +44,11 @@ int Button::getPin() {
 
 bool Button::isPressedOnce() {
   if(! state && this->isPressed()) {
-    return true;
+    return SUCCESS;
     state = true;
   }
   if(this->isReleased()) {
     state = false;
   }
-  return false;
+  return FAIL;
 }
