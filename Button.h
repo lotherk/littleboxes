@@ -10,7 +10,7 @@ private:
 public:
   Button();
   Button(int pin);
-  Button(int pin, int mode=INPUT);
+  Button(int pin, int mode);
   bool isPressed();
   bool isReleased();
   int getPin();
