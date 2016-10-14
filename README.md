@@ -1,67 +1,66 @@
-# littleboxes
+#littleboxes
 
-This is a small library I use in my arduino projects. It is a set of classes you can use for [Button](src/Button.h)s, [Encoder](src/Encoder.h)s and, what I call, an [AnalogButton](src/AnalogButton.h).
-
-I use these for my *little boxes*, like [boxwax](https://github.com/lotherk/boxwax) or [joynardo](https://github.com/lotherk/joynardo).
-
+This is a small library I use in my arduino projects.
+    It is a set of classes you can use for[Button]
+	 (src / Button.h) s,[Encoder] (src / Encoder.h)
+s and, what I call,
+    an[AnalogButton] (src / AnalogButton.h).I use these for my * little boxes *,
+    like[boxwax]
+	 (https:		//github.com/lotherk/boxwax) or [joynardo](https://github.com/lotherk/joynardo).
 ### Button
+	  A[Button] (src /
+		     Button.
+		     cpp) has a digital input and is either pressed or released.
+	  ``` cpp Button b; void setup()
+	  {
+	  // ...
+	  pinMode(4, INPUT); b.setPin(4);
+	  // ...
+	  }
 
-A [Button](src/Button.cpp) has a digital input and is either pressed or released.
+	  void loop() {
+	  // ...
+	  if (b.isPressed()) {
+	  // Button is pressed
+	  }
+	  else {
+	  // Button is released
+	  }
+	  // ...
+	  }
 
-```cpp
-Button b;
-
-void setup() {
-  // ...
-  pinMode(4, INPUT);
-  b.setPin(4);
-  // ...
-}
-
-void loop() {
-  // ...
-  if(b.isPressed()) {
-    // Button is pressed
-  } else {
-    // Button is released
-  }
-  // ...
-}
-```
-
+	  ```
 ### AnalogButton
+	  An[AnalogButton] (src /
+			    AnalogButton.
+			    cpp) has multiple states and is connected to an
+	  analog pin.
+	  States are defined by resistor values. ``` cpp int aResistorValues[2]
+	  = {
+	  1023, 575}; Button aButton; void setup() {
 
-An [AnalogButton](src/AnalogButton.cpp) has multiple states and is connected to an analog pin. States are defined by resistor values.
+	  // ...
+	  aButton.setPin(A0); aButton.setResistorValues(aResistorValues, 2);	// pass the size of aResistorValues
+	  // ...
+	  }
 
-```cpp
-int aResistorValues[2] = { 1023, 575 };
-Button aButton;
+	  void loop() {
+	  switch (aButton.read()) {
+case 0:
+	  // first state, value is 1023
+break; case 1:
+	  // second state, value is 575
+break; case -1:
+	  // faulty state, value on A0 is not defined in resistorValues
+	  break;}
+	  }
 
-void setup() {
-  // ...
-  aButton.setPin(A0);
-  aButton.setResistorValues(aResistorValues, 2); // pass the size of aResistorValues
-  // ...
-}
-
-void loop() {
-  switch(aButton.read()) {
-    case 0:
-      // first state, value is 1023
-      break;
-    case 1:
-      // second state, value is 575
-      break;
-    case -1:
-      // faulty state, value on A0 is not defined in resistorValues
-      break;
-  }
-}
-```
-
+	  ```
 ### Encoder
-
-An [Encoder](src/Encoder.cpp) can be turned left, turned right and increases or decreases a value. If you're using a clickable encoder, use [Button](src/Button.cpp) for the click. An encoder uses 2 digital pins. It uses NO interrupt so values might not be 100% accurate.
+	  An[Encoder] (src / Encoder.cpp) can be turned left,
+	  turned right and increases or decreases a value.
+	  If you
+	  're using a clickable encoder, use [Button](src/Button.cpp) for the click. An encoder uses 2 digital pins. It uses NO interrupt so values might not be 100% accurate.
 
 ```cpp
 Encoder encoder;
@@ -182,3 +181,4 @@ void loop() {
   }
 }
 ```
+
